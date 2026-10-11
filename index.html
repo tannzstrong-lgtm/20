@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090911">
+  <meta name="description" content="TannnVideo AI — studio pembuatan video sinematik berdurasi 60 detik dengan Seedance 2.0.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <title>TannnVideo AI — Studio</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="TannnVideo AI beranda">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 7h18v5h-6v14h-6V12H7z" fill="currentColor"/><path d="M23 19l5 5-5 3z" fill="#b9a6ff"/></svg></span>
+        <span><strong>TannnVideo</strong><small>AI STUDIO</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav-item active" type="button"><span class="nav-icon">✳</span> Studio <span class="nav-current"></span></button>
+      <a class="nav-item" href="#storyboard"><span class="nav-icon">▦</span> Storyboard <span class="nav-count">12</span></a>
+      <a class="nav-item" href="#result"><span class="nav-icon">▷</span> Hasil video</a>
+      <div class="sidebar-bottom">
+        <div class="engine-card">
+          <span class="status-dot"></span>
+          <div><strong>Seedance 2.0</strong><small>API video engine</small></div>
+          <span class="engine-badge">API</span>
+        </div>
+        <button class="nav-item logout-button" id="logoutButton" type="button"><span class="nav-icon">↪</span> Keluar</button>
+        <div class="side-foot">TannnVideo AI <span>•</span> Web Studio</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mini">T</span><strong>TannnVideo AI</strong></div>
+        <div class="breadcrumb">Workspace <span>/</span> <b>Studio</b></div>
+        <div class="topbar-right"><span class="top-pill"><span class="status-dot"></span> Seedance 2.0</span><button class="avatar" aria-label="Profil">T</button></div>
+      </header>
+
+      <section class="page-heading">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> AI VIDEO CREATOR</div>
+          <h1>Ceritakan ide. <span>Jadikan sinema.</span></h1>
+          <p>Ubah satu ide menjadi video sinematik vertikal berdurasi 60 detik.</p>
+        </div>
+        <div class="duration-stamp"><span class="stamp-icon">◷</span><div><strong>60 DETIK</strong><small>12 adegan × 5 detik</small></div></div>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="left-column">
+          <section class="panel prompt-panel">
+            <div class="panel-heading"><div><span class="step-number">01</span><h2>Ceritakan videomu</h2></div><span class="optional-tag">PROMPT</span></div>
+            <label class="field-label" for="storyPrompt">Ide utama / cerita</label>
+            <textarea id="storyPrompt" class="story-input" maxlength="3000" placeholder="Contoh: Seorang pemuda yang diremehkan ternyata menyimpan kekuatan naga kuno. Saat keluarganya mengkhianatinya, sebuah rahasia mengubah seluruh hidupnya..."></textarea>
+            <div class="field-bottom"><span class="helper-text">Jelaskan karakter, konflik, suasana, dan akhir cerita.</span><span class="char-count" id="charCount">0 / 3000</span></div>
+            <div class="prompt-extras">
+              <div class="field-group"><label class="field-label" for="genreSelect">Genre</label><div class="select-wrap"><select id="genreSelect"><option value="Drama sinematik">Drama sinematik</option><option value="Action epik">Action epik</option><option value="Fantasi wuxia">Fantasi wuxia</option><option value="Horor atmosferik">Horor atmosferik</option><option value="Anime cinematic">Anime cinematic</option><option value="Travel film">Travel film</option><option value="Iklan produk premium">Iklan produk premium</option><option value="Dokumenter realistis">Dokumenter realistis</option></select><span>⌄</span></div></div>
+              <div class="field-group"><label class="field-label" for="ratioSelect">Rasio video</label><div class="select-wrap"><select id="ratioSelect"><option value="9:16">9:16 · Reels / TikTok</option><option value="16:9">16:9 · YouTube</option><option value="1:1">1:1 · Square</option></select><span>⌄</span></div></div>
+            </div>
+            <div class="style-row"><span class="field-label">Gaya visual</span><div class="style-options" role="group" aria-label="Gaya visual"><button class="style-chip selected" type="button" data-style="Realistis sinematik">◉ <span>Realistis</span></button><button class="style-chip" type="button" data-style="Fantasy cinematic dengan pencahayaan dramatis">✧ <span>Fantasy</span></button><button class="style-chip" type="button" data-style="Anime detail dengan gerakan dinamis">◈ <span>Anime</span></button><button class="style-chip" type="button" data-style="3D cinematic high detail">⬡ <span>3D</span></button></div></div>
+            <div class="prompt-note"><span class="note-icon">✦</span><p>Storyboard otomatis dibuat menjadi <strong>12 klip</strong>. Konsistensi karakter dan hasil akhir mengikuti kemampuan model/API yang digunakan.</p></div>
+            <button id="generateButton" class="primary-button" type="button"><span class="button-spark">✧</span><span id="generateButtonText">Buat video 60 detik</span><span class="button-arrow">→</span></button>
+            <p class="button-footnote">12 klip AI · Durasi target 60 detik · API key tetap di server</p>
+          </section>
+
+          <section class="panel storyboard-panel" id="storyboard">
+            <div class="panel-heading"><div><span class="step-number">02</span><h2>Storyboard</h2></div><span class="scene-total"><b id="sceneDoneCount">0</b> / 12 selesai</span></div>
+            <p class="section-subtitle">Atur detail setiap adegan sebelum mulai generate. Prompt utama akan diterapkan ke semua adegan.</p>
+            <div id="sceneList" class="scene-list"></div>
+            <div class="storyboard-footer"><span>Setiap adegan ditargetkan 5 detik.</span><button id="resetStoryboardButton" type="button" class="text-button">Reset storyboard ↺</button></div>
+          </section>
+        </div>
+
+        <div class="right-column">
+          <section class="panel progress-panel">
+            <div class="panel-heading"><div><span class="step-number">03</span><h2>Proses generasi</h2></div><span class="live-tag"><span class="status-dot"></span> LIVE</span></div>
+            <div class="progress-number-row"><div><strong id="progressPercent">0%</strong><span id="progressLabel">Menunggu prompt</span></div><span class="progress-mini-icon">✳</span></div>
+            <div class="progress-track"><span id="progressBar"></span></div>
+            <div class="process-stats"><div><small>ADEGAN SELESAI</small><strong id="progressScenes">0 <span>/ 12</span></strong></div><div><small>DURASI TARGET</small><strong>01:00 <span>menit</span></strong></div></div>
+            <div class="process-divider"></div>
+            <div class="pipeline-title">ALUR PEMBUATAN</div>
+            <div class="pipeline-step done"><span class="pipeline-icon">✓</span><div><strong>Prompt & storyboard</strong><small>Siapkan konsep setiap adegan</small></div><span class="pipeline-state">SIAP</span></div>
+            <div class="pipeline-step" id="pipelineGenerate"><span class="pipeline-icon">2</span><div><strong>Generate klip AI</strong><small>Seedance 2.0 · 12 adegan</small></div><span class="pipeline-state" id="pipelineGenerateState">MENUNGGU</span></div>
+            <div class="pipeline-step" id="pipelineRender"><span class="pipeline-icon">3</span><div><strong>Render video final</strong><small>Satukan klip dalam browser</small></div><span class="pipeline-state" id="pipelineRenderState">MENUNGGU</span></div>
+            <div class="status-message" id="statusMessage" role="status">Masukkan cerita lalu tekan “Buat video 60 detik”.</div>
+          </section>
+
+          <section class="panel result-panel" id="result">
+            <div class="panel-heading"><div><span class="step-number">04</span><h2>Hasil video</h2></div><span class="result-format">WEBM</span></div>
+            <div id="emptyPreview" class="empty-preview"><div class="preview-glow"></div><div class="play-orb">▷</div><strong>Video kamu akan tampil di sini</strong><p>Generate semua adegan, lalu gabungkan menjadi satu video berdurasi 60 detik.</p><div class="preview-placeholder"><span>▶</span><span>00:60</span><i></i></div></div>
+            <video id="finalVideo" class="final-video hidden" controls playsinline></video>
+            <div id="renderProgressWrap" class="render-progress-wrap hidden"><div><span id="renderProgressLabel">Mempersiapkan render...</span><b id="renderProgressValue">0%</b></div><div class="progress-track"><span id="renderProgressBar"></span></div></div>
+            <button id="renderButton" class="secondary-button" type="button" disabled><span>▣</span> Gabungkan klip menjadi video</button>
+            <a id="downloadButton" class="download-button hidden" download="tannnvideo-ai-60s.webm"><span>↓</span> Download video 60 detik</a>
+            <p class="result-footnote">Render berlangsung di perangkat kamu. Format hasil: WebM (video + audio jika tersedia dari klip).</p>
+          </section>
+
+          <section class="security-note"><span class="shield-icon">⬡</span><div><strong>Privasi API</strong><p>API key disimpan sebagai Environment Variables di Vercel dan tidak dikirim ke browser.</p></div></section>
+        </div>
+      </section>
+      <footer class="app-footer"><span>© TannnVideo AI</span><span>Dibuat untuk kreator <i>✦</i></span></footer>
+    </main>
+  </div>
+
+  <div id="loginOverlay" class="login-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <div class="login-card"><div class="login-logo">T</div><div class="eyebrow">PRIVATE AI STUDIO</div><h2 id="loginTitle">Selamat datang kembali.</h2><p>Masukkan kode akses untuk membuka TannnVideo AI Studio.</p><form id="loginForm"><label for="accessCode">Kode akses</label><input id="accessCode" type="password" autocomplete="current-password" maxlength="200" required placeholder="Masukkan kode akses"><button class="primary-button" type="submit"><span>Masuk ke Studio</span><span class="button-arrow">→</span></button><div class="login-error" id="loginError" role="alert"></div></form><small>Kode akses diatur oleh pemilik deployment di Vercel.</small></div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

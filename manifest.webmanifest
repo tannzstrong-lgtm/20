@@ -1,0 +1,14 @@
+{
+  "id": "/",
+  "name": "TannnVideo AI Studio",
+  "short_name": "TannnVideo AI",
+  "description": "Studio pembuat video sinematik berdurasi 60 detik.",
+  "lang": "id-ID",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#090911",
+  "theme_color": "#090911",
+  "icons": [{"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]
+}
